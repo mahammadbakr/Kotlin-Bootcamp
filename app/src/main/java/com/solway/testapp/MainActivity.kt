@@ -241,81 +241,180 @@ class MainActivity : AppCompatActivity() {
 
         //#### SECTION 6 ###############################################################
 
-
-        // Kotlin Inheritance with examples (overriding)
-        open class Animal() {
-            open var colour: String = "White"
-        }
-
-        class Dog : Animal() {
-            //override must be done
-            override var colour: String = "Black"
-            fun sound() {
-                println("Dog makes a sound of woof woof")
-            }
-        }
-
-        val d = Dog()
-        println("${d.sound()}")
-
-
-        // another example of  Inheritance
-        open class Book(val title: String, val author: String) {
-
-            private var currentPage = 1
-
-            open fun readPage() {
-                currentPage++
-            }
-        }
-
-        class EBook(title: String, author: String, var format: String = "text") : Book(title, author) {
-
-            private var wordsRead = 0
-
-            override fun readPage() {
-                wordsRead = wordsRead + 250
-            }
-        }
-
-        val eBook = EBook("title here", "Mohammed Bakr", "here text")
-        println("${eBook.readPage()}")
-
-
+//
+//        // Kotlin Inheritance with examples (overriding)
+//        open class Animal() {
+//            open var colour: String = "White"
+//        }
+//
+//        class Dog : Animal() {
+//            //override must be done
+//            override var colour: String = "Black"
+//            fun sound() {
+//                println("Dog makes a sound of woof woof")
+//            }
+//        }
+//
+//        val d = Dog()
+//        println("${d.sound()}")
+//
+//
+//        // another example of  Inheritance
+//        open class Book(val title: String, val author: String) {
+//
+//            private var currentPage = 1
+//
+//            open fun readPage() {
+//                currentPage++
+//            }
+//        }
+//
+//        class EBook(title: String, author: String, var format: String = "text") : Book(title, author) {
+//
+//            private var wordsRead = 0
+//
+//            override fun readPage() {
+//                wordsRead = wordsRead + 250
+//            }
+//        }
+//
+//        val eBook = EBook("title here", "Mohammed Bakr", "here text")
+//        println("${eBook.readPage()}")
+//
+//
         //#### SECTION 7 ###############################################################
 
 
-        //Interfaces in Kotlin
 
-        abstract class CoverBook {
-            abstract val coverType: String
-        }
-
-        class Wood : CoverBook() {
-            override val coverType: String
-                get() = "WOOD"
-        }
-
-        class Fiber : CoverBook() {
-            override val coverType: String
-                get() = "Fiber"
-        }
-
-
-        // Data Classes in Kotlin
-
-        data class BookContainer(var book: EBook) {
-            val label = book.author
-        }
-
-        val spiceCabinet = listOf(BookContainer(EBook("Handle", "Nilson")),
-                BookContainer(EBook(" Curry", "Bright")))
-        for (element in spiceCabinet) println(element.label)
-
+//        //Interfaces in Kotlin
+//
+//        abstract class CoverBook {
+//            abstract val coverType: String
+//        }
+//
+//        class Wood : CoverBook() {
+//            override val coverType: String
+//                get() = "WOOD"
+//        }
+//
+//        class Fiber : CoverBook() {
+//            override val coverType: String
+//                get() = "Fiber"
+//        }
+//
+//
+//        // Data Classes in Kotlin
+//        // Data classes are used for Creating objects that only have properties without additional functionality.
+//
+//        data class BookContainer(var book: EBook) {
+//            val label = book.author
+//        }
+//
+//        val spiceCabinet = listOf(BookContainer(EBook("Handle", "Nilson")),
+//                BookContainer(EBook(" Curry", "Bright")))
+//        for (element in spiceCabinet) println(element.label)
+//
 
 
 
         //#### SECTION 8 ###############################################################
+
+
+        //Pairs in Kotlin
+//
+//        val pairs = "Real" to "Barca" to "bayren" to "Attlatico"
+//        println(pairs)
+//
+//
+//        //full example of Pairs in kotlin
+//        class Book(val title: String, val author: String, val year: Int) {
+//
+//            fun getTitleAuthor(): Pair<String, String> {
+//                return (title to author)
+//            }
+//
+//            fun getTitleAuthorYear(): Triple<String, String, Int> {
+//                return Triple(title, author, year)
+//            }
+//        }
+//
+//        val book = Book("Romeon and Juliet", "William Shakespeare", 1597)
+//        val bookTitleAuthor = book.getTitleAuthor()
+//        val bookTitleAuthorYear = book.getTitleAuthorYear()
+//        println("Here is your book ${bookTitleAuthor.first} by ${bookTitleAuthor.second}")
+//        println("Here is your book ${bookTitleAuthorYear.first} " +
+//                "by ${bookTitleAuthorYear.second} written in ${bookTitleAuthorYear.third}")
+//
+//
+//        //collections in kotlin
+//
+//        val allBooks = setOf("Macbeth", "Romeo and Juliet", "Hamlet", "A Midsummer Night's Dream")
+//        val library = mapOf("Shakespeare" to allBooks)
+//        println(library.any { it.value.contains("Hamlet") })
+//
+//        val moreBooks = mutableMapOf<String, String>("Wilhelm Tell" to "Schiller")
+//        moreBooks.getOrPut("Jungle Book") { "Kipling" }
+//        moreBooks.getOrPut("Hamlet") { "Shakespeare" }
+//        println(moreBooks)
+//
+//
+//
+//        //#### SECTION 9 ###############################################################
+//
+//
+//
+//        //Const & Val Difference
+//
+//        val size = 20    // val will not change after assign but it assign during program execution
+//        //const val size= 20    // const is also can't change after assign but it will assign during compile the code
+//
+//        //reguler object
+//        object Constants {
+//            //assign constants here
+//            const val size= 20
+//        }
+//        //copanion object (used inside classes)
+//          companion object Constants {
+//            //assign constants here
+//            const val size= 20
+//          }
+
+
+
+        //Extension Functions (Important)
+
+
+        //example of extension function
+
+//        class Student{
+//            fun isPassed(mark: Int): Boolean{
+//                return mark>40
+//            }
+//        }
+//        fun Student.isExcellent(mark: Int): Boolean{
+//            return mark > 90
+//        }
+//        val student = Student()
+//        val passingStatus = student.isPassed(55)
+//        println("student passing status is $passingStatus")
+//        val excellentStatus = student.isExcellent(95)
+//        println("student excellent status is $excellentStatus")
+//
+//       //usefull example
+//        fun MutableList<Int>.swaap(index1: Int, index2: Int):MutableList<Int> {
+//            val tmp = this[index1] // 'this' represents to the list
+//            this[index1] = this[index2]
+//            this[index2] = tmp
+//            return this
+//        }
+//        val list = mutableListOf(5,10,15)
+//        println("before swapping the list :$list")
+//        val result = list.swaap(0, 2)
+//        println("after swapping the list :$result")
+
+
+        //#### SECTION 10 ###############################################################
+
 
 
 
