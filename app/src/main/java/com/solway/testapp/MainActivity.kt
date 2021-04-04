@@ -57,48 +57,102 @@ class MainActivity : AppCompatActivity() {
 
       //#### SECTION 2 ###############################################################
 
-        // get today of the week days
-        fun dayOfWeek() {
-            println("What day is it today?")
-            val day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
-            println( when (day) {
-                1 -> "Sunday"
-                2 -> "Monday"
-                3 -> "Tuesday"
-                4 -> "Wednesday"
-                5 -> "Thursday"
-                6 -> "Friday"
-                7 -> "Saturday"
-                else -> "Time has stopped"
-            })
-        }
-        dayOfWeek()
-
-        //another example
-        fun getFortuneCookie() : String {
-            val fortunes = listOf( "You will have a great day!",
-                    "Things will go well for you today.",
-                    "Enjoy a wonderful day of success.",
-                    "Be humble and all will turn out well.",
-                    "Today is a good day for exercising restraint.",
-                    "Take it easy and enjoy life!",
-                    "Treasure your friends, because they are your greatest fortune.")
-            print("\nEnter your birthday: ")
-            val birthday = readLine()?.toIntOrNull() ?: 1
-            return fortunes[birthday.rem(fortunes.size)]
-        }
-        println("\nYour fortune is: ${getFortuneCookie()}")
-
-
-        //default value argument in kotlin [ same as dart ]
-        fun swimming(speed: String = "fast"){
-            println(speed)
-        }
-        swimming()  //it print fast because no argument input and fast is default value argument
-        swimming(speed = "slow")  //or you can give it a value instead
+//        // get today of the week days
+//        fun dayOfWeek() {
+//            println("What day is it today?")
+//            val day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
+//            println( when (day) {
+//                1 -> "Sunday"
+//                2 -> "Monday"
+//                3 -> "Tuesday"
+//                4 -> "Wednesday"
+//                5 -> "Thursday"
+//                6 -> "Friday"
+//                7 -> "Saturday"
+//                else -> "Time has stopped"
+//            })
+//        }
+//        dayOfWeek()
+//
+//        //another example
+//        fun getFortuneCookie() : String {
+//            val fortunes = listOf( "You will have a great day!",
+//                    "Things will go well for you today.",
+//                    "Enjoy a wonderful day of success.",
+//                    "Be humble and all will turn out well.",
+//                    "Today is a good day for exercising restraint.",
+//                    "Take it easy and enjoy life!",
+//                    "Treasure your friends, because they are your greatest fortune.")
+//            print("\nEnter your birthday: ")
+//            val birthday = readLine()?.toIntOrNull() ?: 1
+//            return fortunes[birthday.rem(fortunes.size)]
+//        }
+//        println("\nYour fortune is: ${getFortuneCookie()}")
+//
+//
+//        //default value argument in kotlin [ same as dart ]
+//        fun swimming(speed: String = "fast"){
+//            println(speed)
+//        }
+//        swimming()  //it print fast because no argument input and fast is default value argument
+//        swimming(speed = "slow")  //or you can give it a value instead
 
 
         //#### SECTION 3 ###############################################################
+
+
+
+        //methods and expressions short way in Kotlin (Amazing)
+        fun isTooHot(temperature: Int) = temperature > 30
+        println(isTooHot(20)) // return false
+
+        fun isDirty(dirty: Int) = dirty > 30
+        println(isDirty(20)) // return false
+
+        fun isSunday(day: String) = day == "sunday"
+        println(isSunday("sunday")) // return true
+
+
+
+        //  some other expressions
+        fun isVeryHot (temperature: Int) = temperature > 35
+        fun isSadRainyCold (mood: String, weather: String, temperature: Int) =
+                mood == "sad" && weather == "rainy" && temperature == 0
+        fun isHappySunny (mood: String, weather: String) = mood == "happy" && weather == "sunny"
+        fun whatShouldIDoToday(mood: String, weather: String = "sunny", temperature: Int = 24) : String {
+            return when {
+                isVeryHot(temperature) -> "go swimming"
+                isSadRainyCold(mood, weather, temperature) -> "stay in bed"
+                isHappySunny(mood, weather) -> "go for a walk"
+                else -> "Stay home and read."
+            }
+        }
+
+        println(whatShouldIDoToday("happy", "sunny"))
+        println(whatShouldIDoToday("sad"))
+        print("How do you feel?")
+        println(whatShouldIDoToday(readLine()!!))
+
+
+        // Filtering in Kotlin
+
+        val listForFilter = arrayOf("hama0","bama","mama","haba", "mimo", "mrawi")
+        println(listForFilter.filter { true })  //return all
+        println(listForFilter.filter { it[0] == 'h' })  //return [hama0, haba]
+        println(listForFilter.filter { it[0] == 'm' })  //return [mama, mimo, mrawi]
+
+
+        //Random values in Kotlin
+        fun randomDay () :String {
+            val daysOfWeek = arrayOf("saturday","sunday","monday","tuesday","wednesday", "thursday", "friday")
+            return  daysOfWeek[Random().nextInt(7)]
+        }
+        println(randomDay())
+
+
+        //#### SECTION 4 ###############################################################
+
+
 
     }
 }
