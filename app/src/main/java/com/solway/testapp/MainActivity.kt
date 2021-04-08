@@ -416,6 +416,57 @@ class MainActivity : AppCompatActivity() {
         //#### SECTION 10 ###############################################################
 
 
+//        // Full example of Generic Classes
+//        open class BaseBuildingMaterial() {
+//            open val numberNeeded = 1
+//        }
+//
+//        class Wood : BaseBuildingMaterial() {
+//            override val numberNeeded = 4
+//        }
+//
+//        class Brick : BaseBuildingMaterial() {
+//            override val numberNeeded = 8
+//        }
+//
+//        class Building<T: BaseBuildingMaterial>(val buildingMaterial: T) {
+//
+//            val baseMaterialsNeeded = 100
+//            val actualMaterialsNeeded = buildingMaterial.numberNeeded * baseMaterialsNeeded
+//
+//            fun build() {
+//                println(" $actualMaterialsNeeded ${buildingMaterial::class.simpleName} required")
+//            }
+//        }
+//        Building(Wood()).build()
+//
+//
+//        // inline + reified  in Kotlin
+//
+//
+//        // without reified type
+//        fun <T> String.toKotlinObject(): T {
+//            val mapper = jacksonObjectMapper()
+//            //does not compile!
+//            return mapper.readValue(this, T::class.java)
+//        }
+//
+//        //with explicit Class parameter
+//        fun <T: Any> String.toKotlinObject(c: KClass<T>): T {
+//            val mapper = jacksonObjectMapper()
+//            return mapper.readValue(this, c.java)
+//        }
+//
+//        //with reified type
+//        inline fun <reified T: Any> String.toKotlinObject(): T {
+//            val mapper = jacksonObjectMapper()
+//            return mapper.readValue(this, T::class.java)
+//        }
+
+
+        //#### SECTION 11 ###############################################################
+
+
 
 
 
